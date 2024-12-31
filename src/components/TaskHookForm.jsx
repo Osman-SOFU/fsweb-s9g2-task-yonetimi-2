@@ -1,6 +1,6 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { nanoid } from "nanoid";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
 
 export default function TaskHookForm({ kisiler, submitFn }) {
@@ -9,22 +9,21 @@ export default function TaskHookForm({ kisiler, submitFn }) {
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: 'onChange' });
 
   function mySubmit(data) {
     submitFn({
       ...data,
       id: nanoid(5),
-      status: "yapılacak",
+      status: 'yapılacak',
     });
-    toast.success(data.title + " başarıyla eklendi");
+    toast.success(data.title + ' başarıyla eklendi');
     reset({
-      title: "",
-      description: "",
-      deadline: ""
+      title: '',
+      description: '',
+      deadline: '',
     });
   }
-
 
   return (
     <form className="taskForm" onSubmit={handleSubmit(mySubmit)}>
@@ -34,7 +33,7 @@ export default function TaskHookForm({ kisiler, submitFn }) {
         </label>
         <input
           className="input-text"
-          {...register("title", { required: "Task başlığı yazmalısınız" })}
+          {...register('title', { required: 'Task başlığı yazmalısınız' })}
           id="title"
           name="title"
           type="text"
@@ -48,11 +47,11 @@ export default function TaskHookForm({ kisiler, submitFn }) {
         </label>
         <textarea
           className="input-textarea"
-          {...register("description", {
-            required: "Task açıklaması yazmalısınız",
+          {...register('description', {
+            required: 'Task açıklaması yazmalısınız',
             minLength: {
               value: 10,
-              message: "Task açıklaması en az 10 karakter içermelidir",
+              message: 'Task açıklaması en az 10 karakter içermelidir',
             },
           })}
           rows="3"
@@ -70,11 +69,11 @@ export default function TaskHookForm({ kisiler, submitFn }) {
           {kisiler.map((p) => (
             <label className="input-checkbox" key={p}>
               <input
-                {...register("people", {
-                  required: "Lütfen en az 1 kişi seçin",
+                {...register('people', {
+                  required: 'Lütfen en az 1 kişi seçin',
                   validate: {
                     maxKisi: (value) =>
-                      value.length < 3 || "En fazla 3 kişi seçebilirsiniz",
+                      value.length < 3 || 'En fazla 3 kişi seçebilirsiniz',
                   },
                 })}
                 type="checkbox"
@@ -96,13 +95,17 @@ export default function TaskHookForm({ kisiler, submitFn }) {
         </label>
         <input
           className="input-text"
-          {...register("deadline", { required: "Son teslim tarihi seçmelisiniz" })}
+          {...register('deadline', {
+            required: 'Son teslim tarihi seçmelisiniz',
+          })}
           id="deadline"
           name="deadline"
           type="date"
           min="2023-01-25"
         />
-        {errors.deadline && <p className="input-error">{errors.deadline.message}</p>}
+        {errors.deadline && (
+          <p className="input-error">{errors.deadline.message}</p>
+        )}
       </div>
 
       <div className="form-line">

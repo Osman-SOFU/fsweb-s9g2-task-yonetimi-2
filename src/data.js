@@ -1,40 +1,44 @@
-export const initialTeam = ["ömer", "emre", "gökhan", "enis"];
+import { addDays, format } from 'date-fns';
+
+export const initialTeam = ['Ömer', 'Emre', 'Gökhan', 'Enis'];
+
+const date = new Date();
 
 export const initialTasks = [
   {
     id: 1,
-    title: "Projeyi baştan sona oku",
+    title: 'Projeyi baştan sona oku',
     description:
-      "Bugün öğrendiklerimizden hangilerini projede kullanabiliriz, hangi kısımları mevcut bilgimizle yapabiliriz?",
-    people: ["ömer", "emre"],
-    deadline: "2023-08-23",
-    status: "yapıldı",
+      'Bugün öğrendiklerimizden hangilerini projede kullanabiliriz, hangi kısımları mevcut bilgimizle yapabiliriz?',
+    people: ['Ömer', 'emre'],
+    deadline: format(addDays(date, 2), 'yyyy-MM-dd'),
+    status: 'yapıldı',
   },
   {
     id: 2,
-    title: "Projede neler yapmalıyız, bir liste çıkar",
+    title: 'Projede neler yapmalıyız, bir liste çıkar',
     description:
-      "Projede neler yapmamız gerekiyor? Aklımıza gelen her adımı yazalım.",
-    people: ["ömer"],
-    deadline: "2023-08-25",
-    status: "yapılacak",
+      'Projede neler yapmamız gerekiyor? Aklımıza gelen her adımı yazalım.',
+    people: ['Ömer'],
+    deadline: format(addDays(date, -1), 'yyyy-MM-dd'),
+    status: 'yapılacak',
   },
   {
     id: 3,
-    title: "Yapılacaklar listesini sıraya koy",
+    title: 'Yapılacaklar listesini sıraya koy',
     description:
-      "Hangi adımdan başlasak daha iyi olur? Yapılacakları doğru sıraya koymaya çalışmak da bize fikir verebilir.",
-    people: ["emre"],
-    deadline: "2023-08-27",
-    status: "yapılacak",
+      'Hangi adımdan başlasak daha iyi olur? Yapılacakları doğru sıraya koymaya çalışmak da bize fikir verebilir.',
+    people: ['emre'],
+    deadline: format(addDays(date, 4), 'yyyy-MM-dd'),
+    status: 'yapılacak',
   },
   {
     id: 4,
-    title: "Yazmaya başla!",
+    title: 'Yazmaya başla!',
     description:
-      "Unutma, en iyi öğretmen tecrübedir. Çok takılmadığın sürece konu tekrarı yapma. Sadece takıldığın yerleri araştır.",
-    people: ["ömer", "emre"],
-    deadline: "2023-08-31",
-    status: "yapılacak",
+      'Unutma, en iyi öğretmen tecrübedir. Çok takılmadığın sürece konu tekrarı yapma. Sadece takıldığın yerleri araştır.',
+    people: ['Ömer', 'emre'],
+    deadline: format(addDays(date, 10), 'yyyy-MM-dd'),
+    status: 'yapılacak',
   },
 ];
